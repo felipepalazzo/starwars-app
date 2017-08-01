@@ -1,0 +1,31 @@
+<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <fieldset>
+    <div
+      class="input-group"
+      [ngClass]="{'has-error': term.errors?.required && term.touched}">
+      <input
+        type="text"
+        name="term"
+        class="form-control"
+        required
+        minlength="3"
+        ngModel
+        #term="ngModel"
+        placeholder="Search...">
+      <span class="input-group-btn">
+        <button
+          class="btn btn-default"
+          type="submit"
+          [disabled]="f.invalid">
+          Go!
+        </button>
+      </span>
+    </div>
+    <div *ngIf="term.errors?.required && term.touched" class="error">
+      Required field
+    </div>
+    <div *ngIf="term.errors?.minlength && term.touched" class="error">
+      Minimum of 3 characters
+    </div>
+  </fieldset>
+</form>
