@@ -7,9 +7,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SearchBarComponent {
   @Output()
-  submit: EventEmitter<any> = new EventEmitter;
+  submit: EventEmitter<any> = new EventEmitter<any>();
 
-  onSubmit(form) {
-    this.submit.emit(form);
+  onSubmit(event, form) {
+    event.stopPropagation();
+    if (form.valid) {
+      this.submit.emit(form.value);
+    }
   }
 }

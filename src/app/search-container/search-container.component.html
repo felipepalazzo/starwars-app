@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <search-bar (submit)="handleSubmit($event)"></search-bar>
+      <div *ngFor="let p of people">
+        <people [info]="p"></people>
+      </div>
+    </div>
+  </div>
+</div>
